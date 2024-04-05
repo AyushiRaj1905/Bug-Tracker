@@ -1,15 +1,12 @@
-import Reactfrom  from 'react';
-import login from  './Views/Login/login'
+import React from 'react';
 import Login from './Views/Login/login';
 
 function App() {
   return (
     <>
-    <Login/>
+      <Login />
     </>
-
   );
 }
-  
 
 export default App;

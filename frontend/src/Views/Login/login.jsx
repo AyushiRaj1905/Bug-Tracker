@@ -1,43 +1,37 @@
-import React,{useState} from 'react'
-import {useDispatch} from 'react-redux'
-import {signIn} from '../../Controllers/Redux/authSlice'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { signIn } from '../../Controllers/Redux/authSlice';
 
-import './login.css'
+import './login.css';
 
-export default() =>{
-   const dispatch = useDispatch();
+export default () => {
+  const dispatch = useDispatch();
 
-   const [formInput,setFormInput] = useState({
-      name:"",
-      password:""
-   })
+  const [formInput, setFormInput] = useState({
+    name: "",
+    password: ""
+  });
 
-   function inputChange(e){
-        setFormInput({
-         ...formInput,
-         [e.target.name]:e.target.value
+  function inputChange(e) {
+    setFormInput({
+      ...formInput,
+      [e.target.name]: e.target.value
+    });
+  }
 
+  function submit(e) {
+    dispatch(signIn(formInput));
+    e.preventDefault();
+  }
 
-        })
-
-   }
-
-   function submit(e){
-      dispatch(signIn(formInput));
-      e.preventDefault();
-   }
-
-
-   return(
+  return (
     <div className="LoginBG">
-         <form className='login-panel'>
-            <h1>Login:</h1>
-            <input name='name' placeholder='Name' onChange={inputChange} value={formInput.name}></input>
-            <input name='password' type='password' placeholder='password' onChange={inputChange} value={formInput.password}></input>
-            <button type='submit'onClick={submit}>Login</button>
-
-         </form>
-    </div>     
-
-   )
-}
+      <form className='login-panel'>
+        <h1>Login:</h1>
+        <input name='name' placeholder='Name' onChange={inputChange} value={formInput.name}></input>
+        <input name='password' type='password' placeholder='password' onChange={inputChange} value={formInput.password}></input>
+        <button type='submit' onClick={submit}>Login</button>
+      </form>
+    </div>
+  );
+};
